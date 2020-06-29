@@ -24,6 +24,8 @@
     "android": {
       "package": "com.StudiosCriar.ZenPhrases",
       "versionCode": 1
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/Thiagoncg/ZenPhrases"
   }
 }
