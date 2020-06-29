@@ -1,9 +1,37 @@
 import React from 'react';
 import  { Feather as Icon} from '@expo/vector-icons';
-import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity, Alert, Share } from 'react-native';
 import { Roboto_300Light_Italic, Roboto_700Bold } from '@expo-google-fonts/roboto';
 
 const Phrases = () => {
+
+  function sharePrint() {
+    onShare();
+  }
+
+  // const url = await Expo.takeSnapshotAsync();
+
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        title: "Menssagem do Dia",
+        // url: Expo.takeSnapshotAsync(),
+        message: "Compartilhe com seus amigo mais e mais menssagems como esta em com.StudiosCriar.ZenPhazes",
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <ImageBackground
       source={require('../../assets/Bacground.png')}
@@ -15,15 +43,15 @@ const Phrases = () => {
 
         <View style={styles.authorContainer}>
           <Text style={styles.textAuthor}>"Dalai Lama"</Text>
-        </View>     
+        </View>    
+      </View>
 
-        <TouchableOpacity style={styles.shareContainer}>
-          <Icon name="share" color="#FFF" size={22} />
+      <View style={styles.footer}>
+        <TouchableOpacity style={styles.shareContainer} onPress={sharePrint}>
+            <Icon name="share" color="#FFF" size={22} />
         </TouchableOpacity>
       </View>
     </ImageBackground>
-
-
   );
 };
 
@@ -44,17 +72,17 @@ const styles = StyleSheet.create({
     marginTop: 32,
   },
 
-  authorContainer: {
-    width: '100%',
-    flexDirection: "row-reverse",
-    alignItems: "flex-end",
-  },
-
   textPhrases: {
     color: "#FFF",
     fontFamily: "Roboto_300Light_Italic",
     fontSize: 22,
     textAlign: "center",
+  },
+
+  authorContainer: {
+    width: '100%',
+    flexDirection: "row-reverse",
+    alignItems: "flex-end",
   },
 
   textAuthor: {
@@ -73,6 +101,13 @@ const styles = StyleSheet.create({
 
     backgroundColor:"#FFF2",
     borderColor: "#FFF"
+  },
+
+  footer: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    borderColor: '#999',
+    padding: 32,
   },
 
   backgroundImage: {
