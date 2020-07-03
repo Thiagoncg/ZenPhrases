@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feather as Icon } from '@expo/vector-icons';
+import { FontAwesome5 as Icon } from '@expo/vector-icons';
 import { View, Image, StyleSheet, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { Roboto_400Regular } from '@expo-google-fonts/roboto';
@@ -12,6 +12,12 @@ const Login = () => {
   function handleNavigateToPhrases() {
     navigation.navigate('Phrases')
   }
+
+  function hnadleLoginFacebook() {
+
+  }
+
+
   return (
     <ImageBackground 
     source={require('../../assets/Bacground.png')}
@@ -24,10 +30,17 @@ const Login = () => {
       </View>
 
       <View style={styles.footerLogin}>
+
         <TouchableOpacity style={styles.socialButton} onPress={handleNavigateToPhrases}>
-          <Icon name="gift" color="#FFF" size={24} />
-          <Text style={styles.btSocialText}>Frase do dia</Text>
+          <Icon name="facebook-square" color="#FFF" size={24} />
+          <Text style={styles.btSocialText}>FaceBook Login</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity style={styles.socialButton} onPress={handleNavigateToPhrases}>
+          <Icon name="google-plus-square" color="#FFF" size={24} />
+          <Text style={styles.btSocialText}>Google Login</Text>
+        </TouchableOpacity>
+        
       </View>
     </ImageBackground>
   );
@@ -42,10 +55,10 @@ const styles = StyleSheet.create({
   },
 
   footerLogin: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    // flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingBottom: 100,
-
   },
 
   socialButton: {
@@ -53,9 +66,8 @@ const styles = StyleSheet.create({
     width: 240,
     flexDirection: "row",
     borderRadius: 4,
-    overflow: "hidden",
     alignItems: "center",
-    marginTop: 8,
+    marginTop: 32,
     justifyContent: "center",
     textAlign: "center",
     backgroundColor: "#0002",
