@@ -1,22 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import  { Feather as Icon} from '@expo/vector-icons';
 import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity, Alert, Share } from 'react-native';
 import { Roboto_300Light_Italic, Roboto_700Bold } from '@expo-google-fonts/roboto';
 
 const Phrases = () => {
 
-  function sharePrint() {
+  const listPhases = [
+    {
+      id:1,
+      phrase:'“Só existem dois dias no ano que nada pode ser feito. Um se chama ontem e o outro se chama amanhã, portanto hoje é o dia certo para amar, acreditar, fazer e principalmente viver.”',
+      author:'"Dalai Lama"'
+    },
+    {
+      id:2,
+      phrase:'"O sucesso nasce do querer, da determinação e persistência em se chegar a um objetivo. Mesmo não atingindo o alvo, quem busca e vence obstáculos, no mínimo fará coisas admiráveis."',
+      author:'"José de Alencar"'
+    },
+    {
+      id:3,
+      phrase:'"Determinação, coragem e autoconfiança são fatores decisivos para o sucesso. Se estamos possuídos por uma inabalável determinação, conseguiremos superá-los. Independentemente das circunstâncias, devemos ser sempre humildes, recatados e despidos de orgulho."',
+      author:'"Dalai Lama"'
+    },
+    {
+      id:4,
+      phrase:'"A vitalidade é demonstrada não apenas pela persistência, mas pela capacidade de começar de novo."',
+      author:'"F. Scott Fitzgerald"'
+    },
+  ];
+
+  const phrasesLenght = listPhases.length;
+
+  const phaseChosen = Math.floor(Math.random() * phrasesLenght);
+
+
+
+  function handleSharePrint() {
     onShare();
   }
 
-  // const url = await Expo.takeSnapshotAsync();
+  // function randomPhases() {
+  //   const phrasesLenght = listPhases.length;
+
+  //   const phaseChosen = Math.floor(Math.random() * phrasesLenght);
+  
+  //   // const phrase = listPhases[phaseChosen].phrase;
+  
+  //   // return phaseChosen;
+  // }
+
 
   const onShare = async () => {
     try {
       const result = await Share.share({
-        title: "Menssagem do Dia",
-        // url: Expo.takeSnapshotAsync(),
-        message: "Compartilhe com seus amigo mais e mais menssagems como esta em com.StudiosCriar.ZenPhazes",
+        title: "Frase do Dia",
+        message:`${listPhases[phaseChosen].phrase}` ,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -38,16 +75,18 @@ const Phrases = () => {
       style={styles.backgroundImage}
     >
       <View style={styles.container}>  
+
           <Image style={styles.picture} source={require('../../assets/picture.png')} />
-          <Text style={styles.textPhrases}> “Só existem dois dias no ano que nada pode ser feito. Um se chama ontem e o outro se chama amanhã, portanto hoje é o dia certo para amar, acreditar, fazer e principalmente viver.”</Text>
+          <Text style={styles.textPhrases}> {listPhases[phaseChosen].phrase}</Text>
 
         <View style={styles.authorContainer}>
-          <Text style={styles.textAuthor}>"Dalai Lama"</Text>
-        </View>    
+          <Text style={styles.textAuthor}>{listPhases[phaseChosen].author}</Text>
+        </View>   
+
       </View>
 
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.shareContainer} onPress={sharePrint}>
+        <TouchableOpacity style={styles.shareContainer} onPress={handleSharePrint}>
             <Icon name="share" color="#FFF" size={22} />
         </TouchableOpacity>
       </View>
@@ -69,7 +108,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     borderWidth: 8,
     borderColor: "#FFF8",
-    marginTop: 32,
+    marginTop: 64,
   },
 
   textPhrases: {
@@ -107,7 +146,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-end",
     borderColor: '#999',
-    padding: 32,
+    padding: 48,
   },
 
   backgroundImage: {

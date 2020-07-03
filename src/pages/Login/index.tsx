@@ -18,7 +18,9 @@ const Login = () => {
     style={styles.backgroundImage}
     >
       <View style={styles.container}>
-        <Image source={require('../../assets/logo.png')} />
+        <Image source={require('../../assets/logo.png')}
+        style={{ width: '80%', height: '80%', resizeMode: "contain" }}
+        />
       </View>
 
       <View style={styles.footerLogin}>
@@ -28,7 +30,6 @@ const Login = () => {
         </TouchableOpacity>
       </View>
     </ImageBackground>
-
   );
 };
 
@@ -36,14 +37,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
 
   footerLogin: {
     flexDirection: "row",
     justifyContent: "space-around",
-    paddingBottom: 32,
+    paddingBottom: 100,
 
   },
 
@@ -73,10 +74,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+
   backgroundImage:{
     flex : 1,
     width : '100%'
-}
+  }
 
 });
 
