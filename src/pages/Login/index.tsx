@@ -10,13 +10,9 @@ const Login = () => {
   const navigation = useNavigation();
 
   function handleNavigateToPhrases() {
-    navigation.navigate('Phrases')
+   // navigation.navigate('Phrases');
+     navigation.navigate('ButtonShare');
   }
-
-  function hnadleLoginFacebook() {
-
-  }
-
 
   return (
     <ImageBackground 

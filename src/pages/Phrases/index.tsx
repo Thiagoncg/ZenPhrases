@@ -3,6 +3,8 @@ import { Feather as Icon } from '@expo/vector-icons';
 import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity, Alert, Share } from 'react-native';
 import { Roboto_300Light_Italic, Roboto_700Bold } from '@expo-google-fonts/roboto';
 
+import ButtonShare from '../ButtonShare';
+
 const Phrases = () => {
 
   const listPhases = [
@@ -75,17 +77,11 @@ const Phrases = () => {
       style={styles.backgroundImage}
     >
       <View style={styles.container}>
-        {/* <View style={styles.container}>
-          <View style={styles.outter}>
-            <View style={styles.inner}></View>
-          </View>
-        </View> */}
 
         <View style={styles.borderPicture}>
           <Image style={styles.picture} source={require('../../assets/picture.png')} />
         </View>
 
-        
         <Text style={styles.textPhrases}> {listPhases[phaseChosen].phrase}</Text>
 
         <View style={styles.authorContainer}>
@@ -95,6 +91,7 @@ const Phrases = () => {
       </View>
 
       <View style={styles.footer}>
+        {/* <ButtonShare /> */}
         <TouchableOpacity style={styles.shareContainer} onPress={handleSharePrint}>
           <Icon name="share" color="#FFF" size={22} />
         </TouchableOpacity>
@@ -116,8 +113,6 @@ const styles = StyleSheet.create({
     height: 180,
     borderRadius: 100,
     borderWidth: 8,
-    // borderColor: "rgba(0, 0, 0, 0.12)",
-
   },
 
   borderPicture: {
@@ -172,15 +167,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%'
   },
-
-  // inner: {
-  //   position: 'relative',
-  //   width: 150,
-  //   height: 150,
-  //   borderRadius: 150 / 2,
-  //   backgroundColor: '#ED1D27',
-  // },
-
 });
 
 export default Phrases;
