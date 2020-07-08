@@ -1,68 +1,105 @@
 import React, { useState, useEffect } from "react";
-import { Feather as Icon } from '@expo/vector-icons';
-import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity, Alert, Share } from 'react-native';
-import { Roboto_300Light_Italic, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import { Feather as Icon } from "@expo/vector-icons";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  Image,
+  TouchableOpacity,
+  Alert,
+  // Share,
+} from "react-native";
+import {
+  Roboto_300Light_Italic,
+  Roboto_700Bold,
+} from "@expo-google-fonts/roboto";
 
-import Constants from 'expo-constants';
-import * as Sharing from 'expo-sharing';
-import { captureRef } from 'react-native-view-shot';
+import { Share } from "react-native";
+
+import Constants from "expo-constants";
+import * as Sharing from "expo-sharing";
+import { captureRef } from "react-native-view-shot";
 
 // import ButtonShare from '../ButtonShare';
 
 const Phrases = () => {
-
   const listPhases = [
     {
       id: 1,
-      phrase: '“Só existem dois dias no ano que nada pode ser feito. Um se chama ontem e o outro se chama amanhã, portanto hoje é o dia certo para amar, acreditar, fazer e principalmente viver.”',
-      author: 'Dalai Lama'
+      phrase:
+        "“Só existem dois dias no ano que nada pode ser feito. Um se chama ontem e o outro se chama amanhã, portanto hoje é o dia certo para amar, acreditar, fazer e principalmente viver.”",
+      author: "Dalai Lama",
     },
     {
       id: 2,
-      phrase: '"O sucesso nasce do querer, da determinação e persistência em se chegar a um objetivo. Mesmo não atingindo o alvo, quem busca e vence obstáculos, no mínimo fará coisas admiráveis."',
-      author: 'José de Alencar'
+      phrase:
+        '"O sucesso nasce do querer, da determinação e persistência em se chegar a um objetivo. Mesmo não atingindo o alvo, quem busca e vence obstáculos, no mínimo fará coisas admiráveis."',
+      author: "José de Alencar",
     },
     {
       id: 3,
-      phrase: '"Determinação, coragem e autoconfiança são fatores decisivos para o sucesso. Se estamos possuídos por uma inabalável determinação, conseguiremos superá-los. Independentemente das circunstâncias, devemos ser sempre humildes, recatados e despidos de orgulho."',
-      author: 'Dalai Lama'
+      phrase:
+        '"Determinação, coragem e autoconfiança são fatores decisivos para o sucesso. Se estamos possuídos por uma inabalável determinação, conseguiremos superá-los. Independentemente das circunstâncias, devemos ser sempre humildes, recatados e despidos de orgulho."',
+      author: "Dalai Lama",
     },
     {
       id: 4,
-      phrase: '"A vitalidade é demonstrada não apenas pela persistência, mas pela capacidade de começar de novo."',
-      author: 'F. Scott Fitzgerald'
+      phrase:
+        '"A vitalidade é demonstrada não apenas pela persistência, mas pela capacidade de começar de novo."',
+      author: "F. Scott Fitzgerald",
     },
     {
       id: 5,
       phrase: '"O homem comum fala, o sábio escuta, o tolo discute."',
-      author: 'Sabedoria oriental'
+      author: "Sabedoria oriental",
     },
     {
       id: 6,
-      phrase: '“O saber a gente aprende com os mestres e os livros. A sabedoria se aprende é com a vida e com os humildes.”',
-      author: 'Cora Coralina'
+      phrase:
+        "“O saber a gente aprende com os mestres e os livros. A sabedoria se aprende é com a vida e com os humildes.”",
+      author: "Cora Coralina",
     },
     {
       id: 7,
-      phrase: '"Cada dia a natureza produz o suficiente para nossa carência. Se cada um tomasse o que lhe fosse necessário, não havia pobreza no mundo e ninguém morreria de fome."',
-      author: 'Mahatma Gandhi'
-    }
+      phrase:
+        '"Cada dia a natureza produz o suficiente para nossa carência. Se cada um tomasse o que lhe fosse necessário, não havia pobreza no mundo e ninguém morreria de fome."',
+      author: "Mahatma Gandhi",
+    },
   ];
 
   const phrasesLenght = listPhases.length;
 
   const phaseChosen = Math.floor(Math.random() * phrasesLenght);
 
-
   function handleSharePrint() {
     // onShare();
     openShareDialogAsync();
   }
 
+  // const onShare = async () => {
+  //   try {
+  //     const result = await Share.share({
+  //       title: "Frase do Dia",
+  //       message: `${listPhases[phaseChosen].phrase}`,
+  //     });
+  //     if (result.action === Share.sharedAction) {
+  //       if (result.activityType) {
+  //         // shared with activity type of result.activityType
+  //       } else {
+  //         // shared
+  //       }
+  //     } else if (result.action === Share.dismissedAction) {
+  //       // dismissed
+  //     }
+  //   } catch (error) {
+  //     alert(error.message);
+  //   }
+  // };
+
   const onShare = async () => {
     try {
       const result = await Share.share({
-        title: "Frase do Dia",
         message: `${listPhases[phaseChosen].phrase}`,
       });
       if (result.action === Share.sharedAction) {
@@ -79,48 +116,53 @@ const Phrases = () => {
     }
   };
 
-  const openShareDialogAsync = async () => {
-    if (!(await Sharing.isAvailableAsync())) {
-      alert(`Compartilhamento não disponível para esta plataforma`);
-      return;
-    }
-    captureRef(_shareViewContainer, {
-      // defaults
-    }).then(
-      uri => {
-        console.log('Imagem salva em', uri);
-        Sharing.shareAsync(uri);
-      },
-      error =>
-        console.error('Oops, snapshot failed', error)
-    );
-  };
+  // const openShareDialogAsync = async () => {
+  //   if (!(await Sharing.isAvailableAsync())) {
+  //     alert(`Compartilhamento não disponível para esta plataforma`);
+  //     return;
+  //   }
+  //   captureRef(_shareViewContainer, {
+  //     // defaults
+  //   }).then(
+  //     (uri) => {
+  //       console.log("Imagem salva em", uri);
+  //       Sharing.shareAsync(uri);
+  //     },
+  //     (error) => console.error("Oops, snapshot failed", error)
+  //   );
+  // };
 
   return (
     <ImageBackground
-      source={require('../../assets/Bacground.png')}
+      source={require("../../assets/Background-teste.jpg")}
       style={styles.backgroundImage}
-      ref={ view => {
-        _shareViewContainer = view;
-      }}
+      // ref={(view) => {
+      //   _shareViewContainer = view;
+      // }}
     >
       <View style={styles.container}>
-
         <View style={styles.borderPicture}>
-          <Image style={styles.picture} source={require('../../assets/picture.png')} />
+          <Image
+            style={styles.picture}
+            source={require("../../assets/picture.png")}
+          />
         </View>
 
-        <Text style={styles.textPhrases}> {listPhases[phaseChosen].phrase}</Text>
+        <Text style={styles.textPhrases}>
+          {" "}
+          {listPhases[phaseChosen].phrase}
+        </Text>
 
         <View style={styles.authorContainer}>
-          <Text style={styles.textAuthor}>{listPhases[phaseChosen].author}</Text>
+          <Text style={styles.textAuthor}>
+            {listPhases[phaseChosen].author}
+          </Text>
         </View>
-
       </View>
 
       <View style={styles.footer}>
         {/* <ButtonShare /> */}
-        <TouchableOpacity style={styles.shareContainer} onPress={handleSharePrint}>
+        <TouchableOpacity style={styles.shareContainer} onPress={onShare}>
           <Icon name="share" color="#FFF" size={22} />
         </TouchableOpacity>
       </View>
@@ -132,8 +174,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 
   picture: {
@@ -161,7 +203,7 @@ const styles = StyleSheet.create({
   },
 
   authorContainer: {
-    width: '100%',
+    width: "100%",
     flexDirection: "row-reverse",
     alignItems: "flex-end",
   },
@@ -181,19 +223,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
 
     backgroundColor: "#FFF2",
-    borderColor: "#FFF"
+    borderColor: "#FFF",
   },
 
   footer: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    borderColor: '#999',
+    borderColor: "#999",
     padding: 48,
   },
 
   backgroundImage: {
     flex: 1,
-    width: '100%'
   },
 });
 
