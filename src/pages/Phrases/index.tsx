@@ -72,10 +72,10 @@ const Phrases = () => {
 
   const phaseChosen = Math.floor(Math.random() * phrasesLenght);
 
-  function handleSharePrint() {
-    // onShare();
-    openShareDialogAsync();
-  }
+  // function handleSharePrint() {
+  //   // onShare();
+  //   openShareDialogAsync();
+  // }
 
   // const onShare = async () => {
   //   try {
