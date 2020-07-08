@@ -33,7 +33,7 @@ export default class ButtonShare extends React.Component {
         ref={ view => {
           this._shareViewContainer = view;
         }}>
-        <Phrases />
+        <Phrases  />
         <TouchableOpacity
           onPress={this.openShareDialogAsync}
           style={styles.button}>
@@ -47,17 +47,15 @@ export default class ButtonShare extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#155462',
   },
+  
   button: {
     backgroundColor: 'blue',
-    padding: 20,
-    borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 20,
-    color: '#fff',
+    width: 40,
+    height: 40,
+    borderRadius: 20,
   },
 });

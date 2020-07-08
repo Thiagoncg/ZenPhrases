@@ -3,7 +3,11 @@ import { Feather as Icon } from '@expo/vector-icons';
 import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity, Alert, Share } from 'react-native';
 import { Roboto_300Light_Italic, Roboto_700Bold } from '@expo-google-fonts/roboto';
 
-import ButtonShare from '../ButtonShare';
+import Constants from 'expo-constants';
+import * as Sharing from 'expo-sharing';
+import { captureRef } from 'react-native-view-shot';
+
+// import ButtonShare from '../ButtonShare';
 
 const Phrases = () => {
 
@@ -35,21 +39,10 @@ const Phrases = () => {
   const phaseChosen = Math.floor(Math.random() * phrasesLenght);
 
 
-
   function handleSharePrint() {
-    onShare();
+    // onShare();
+    openShareDialogAsync();
   }
-
-  // function randomPhases() {
-  //   const phrasesLenght = listPhases.length;
-
-  //   const phaseChosen = Math.floor(Math.random() * phrasesLenght);
-
-  //   // const phrase = listPhases[phaseChosen].phrase;
-
-  //   // return phaseChosen;
-  // }
-
 
   const onShare = async () => {
     try {
@@ -71,10 +64,30 @@ const Phrases = () => {
     }
   };
 
+  const openShareDialogAsync = async () => {
+    if (!(await Sharing.isAvailableAsync())) {
+      alert(`Compartilhamento não disponível para esta plataforma`);
+      return;
+    }
+    captureRef(_shareViewContainer, {
+      // defaults
+    }).then(
+      uri => {
+        console.log('Imagem salva em', uri);
+        Sharing.shareAsync(uri);
+      },
+      error =>
+        console.error('Oops, snapshot failed', error)
+    );
+  };
+
   return (
     <ImageBackground
       source={require('../../assets/Bacground.png')}
       style={styles.backgroundImage}
+      ref={ view => {
+        _shareViewContainer = view;
+      }}
     >
       <View style={styles.container}>
 

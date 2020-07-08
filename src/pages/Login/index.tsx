@@ -10,8 +10,8 @@ const Login = () => {
   const navigation = useNavigation();
 
   function handleNavigateToPhrases() {
-   // navigation.navigate('Phrases');
-     navigation.navigate('ButtonShare');
+    navigation.navigate('Phrases');
+   //  navigation.navigate('ButtonShare');
   }
 
   return (
