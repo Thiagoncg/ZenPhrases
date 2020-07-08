@@ -11,7 +11,6 @@ const Login = () => {
 
   function handleNavigateToPhrases() {
     navigation.navigate('Phrases');
-   //  navigation.navigate('ButtonShare');
   }
 
   return (

@@ -5,7 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from './pages/Login';
 import Phrases from './pages/Phrases';
-import ButtonShare from './pages/ButtonShare';
 
 const AppStack = createStackNavigator();
 
@@ -19,7 +18,6 @@ const Routes = () => {
       }}>
         <AppStack.Screen name="Login" component={Login}/>
         <AppStack.Screen name="Phrases" component={Phrases}/>
-        <AppStack.Screen name="ButtonShare" component={ButtonShare}/>
       </AppStack.Navigator>
     </NavigationContainer>
   );

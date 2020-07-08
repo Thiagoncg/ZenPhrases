@@ -15,23 +15,38 @@ const Phrases = () => {
     {
       id: 1,
       phrase: '“Só existem dois dias no ano que nada pode ser feito. Um se chama ontem e o outro se chama amanhã, portanto hoje é o dia certo para amar, acreditar, fazer e principalmente viver.”',
-      author: '"Dalai Lama"'
+      author: 'Dalai Lama'
     },
     {
       id: 2,
       phrase: '"O sucesso nasce do querer, da determinação e persistência em se chegar a um objetivo. Mesmo não atingindo o alvo, quem busca e vence obstáculos, no mínimo fará coisas admiráveis."',
-      author: '"José de Alencar"'
+      author: 'José de Alencar'
     },
     {
       id: 3,
       phrase: '"Determinação, coragem e autoconfiança são fatores decisivos para o sucesso. Se estamos possuídos por uma inabalável determinação, conseguiremos superá-los. Independentemente das circunstâncias, devemos ser sempre humildes, recatados e despidos de orgulho."',
-      author: '"Dalai Lama"'
+      author: 'Dalai Lama'
     },
     {
       id: 4,
       phrase: '"A vitalidade é demonstrada não apenas pela persistência, mas pela capacidade de começar de novo."',
-      author: '"F. Scott Fitzgerald"'
+      author: 'F. Scott Fitzgerald'
     },
+    {
+      id: 5,
+      phrase: '"O homem comum fala, o sábio escuta, o tolo discute."',
+      author: 'Sabedoria oriental'
+    },
+    {
+      id: 6,
+      phrase: '“O saber a gente aprende com os mestres e os livros. A sabedoria se aprende é com a vida e com os humildes.”',
+      author: 'Cora Coralina'
+    },
+    {
+      id: 7,
+      phrase: '"Cada dia a natureza produz o suficiente para nossa carência. Se cada um tomasse o que lhe fosse necessário, não havia pobreza no mundo e ninguém morreria de fome."',
+      author: 'Mahatma Gandhi'
+    }
   ];
 
   const phrasesLenght = listPhases.length;
