@@ -1,7 +1,6 @@
 import React from 'react';
 import { FontAwesome5 as Icon } from '@expo/vector-icons';
 import { View, Image, StyleSheet, Text, ImageBackground, TouchableOpacity } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
 import { Roboto_400Regular } from '@expo-google-fonts/roboto';
 import { useNavigation } from '@react-navigation/native';
 
@@ -26,10 +25,10 @@ const Login = () => {
 
       <View style={styles.footerLogin}>
 
-        <TouchableOpacity style={styles.socialButton} onPress={handleNavigateToPhrases}>
+        {/* <TouchableOpacity style={styles.socialButton} onPress={handleNavigateToPhrases}>
           <Icon name="facebook-square" color="#FFF" size={24} />
           <Text style={styles.btSocialText}>FaceBook Login</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <TouchableOpacity style={styles.socialButton} onPress={handleNavigateToPhrases}>
           <Icon name="google-plus-square" color="#FFF" size={24} />
@@ -57,8 +56,8 @@ const styles = StyleSheet.create({
   },
 
   socialButton: {
-    height: 48,
-    width: 240,
+    height: 58,
+    width: 280,
     flexDirection: "row",
     borderRadius: 4,
     alignItems: "center",

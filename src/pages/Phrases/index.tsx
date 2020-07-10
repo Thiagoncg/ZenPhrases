@@ -10,6 +10,7 @@ import { captureRef } from 'react-native-view-shot';
 // import ButtonShare from '../ButtonShare';
 
 const Phrases = () => {
+  
 
   const listPhases = [
     {
@@ -59,27 +60,28 @@ const Phrases = () => {
     openShareDialogAsync();
   }
 
-  const onShare = async () => {
-    try {
-      const result = await Share.share({
-        title: "Frase do Dia",
-        message: `${listPhases[phaseChosen].phrase}`,
-      });
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+  //Compartilhamento de texto esta ok
+  // const onShare = async () => {
+  //   try {
+  //     const result = await Share.share({
+  //       title: "Frase do Dia",
+  //       message: `${listPhases[phaseChosen].phrase}`,
+  //     });
+  //     if (result.action === Share.sharedAction) {
+  //       if (result.activityType) {
+  //         // shared with activity type of result.activityType
+  //       } else {
+  //         // shared
+  //       }
+  //     } else if (result.action === Share.dismissedAction) {
+  //       // dismissed
+  //     }
+  //   } catch (error) {
+  //     alert(error.message);
+  //   }
+  // };
 
-  const openShareDialogAsync = async () => {
+  let openShareDialogAsync = async () => {
     if (!(await Sharing.isAvailableAsync())) {
       alert(`Compartilhamento não disponível para esta plataforma`);
       return;
@@ -89,10 +91,13 @@ const Phrases = () => {
     }).then(
       uri => {
         console.log('Imagem salva em', uri);
+        // alert(uri)
         Sharing.shareAsync(uri);
+        // Sharing.shareAsync("file://" + uri);
       },
       error =>
-        console.error('Oops, snapshot failed', error)
+        alert(error)
+        // console.error('Oops, snapshot failed', error)
     );
   };
 
@@ -107,7 +112,7 @@ const Phrases = () => {
       <View style={styles.container}>
 
         <View style={styles.borderPicture}>
-          <Image style={styles.picture} source={require('../../assets/picture.png')} />
+          <Image style={styles.picture} source={{uri: 'https://scontent-gru2-2.xx.fbcdn.net/v/t1.0-9/33020997_1659307647486451_5962006363147075584_o.jpg?_nc_cat=100&_nc_sid=09cbfe&_nc_ohc=udolr62E61cAX-N0AKg&_nc_ht=scontent-gru2-2.xx&oh=7d03abc867c6e3d961cdb6e0d78b78ff&oe=5F2FE064'}} />
         </View>
 
         <Text style={styles.textPhrases}> {listPhases[phaseChosen].phrase}</Text>
