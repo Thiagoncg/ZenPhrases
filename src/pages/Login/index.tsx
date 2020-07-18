@@ -4,8 +4,6 @@ import { View, Image, StyleSheet, Text, ImageBackground, TouchableOpacity } from
 import { Roboto_400Regular } from '@expo-google-fonts/roboto';
 import { useNavigation } from '@react-navigation/native';
 import * as Google from 'expo-google-app-auth';
-import Expo from 'expo';
-
 
 const Login = () => {
   const navigation = useNavigation();
@@ -13,48 +11,44 @@ const Login = () => {
   const googleLogin = async () => {
     try {
       const result = await Google.logInAsync({
-        androidClientId:'600822925921-v69v0r7c4gbgh0b8q4g3let9v86jbdcn.apps.googleusercontent.com',
+        androidClientId: '796792477593-85tejclpkvcavf6q3sv8eb319mdcaobo.apps.googleusercontent.com',
         scopes: ['profile', 'email'],
       });
 
       if (result.type === 'success') {
+        navigation.navigate('Phrases');
         return result.accessToken;
       } else {
         // return { cancelled: true };
-        return console.log("cancel");        
+        return alert('Erro de acesso');
+        // return console.log("cancel");        
       }
     } catch (e) {
       // return { error: true };
-      return console.log({ error: true });
+      return alert('login: Error:' + e);
     }
   }
 
   function handleNavigateToPhrases() {
     navigation.navigate('Phrases');
-    console.log("Foi pra proxima pagina");
-    
   }
+
   function handleGoogleLogin() {
     googleLogin();
   }
 
-
   return (
     <ImageBackground
-    source={require('../../assets/Bacground.png')}
-    style={styles.backgroundImage}
+      source={require('../../assets/Bacground.png')}
+      style={styles.backgroundImage}
     >
       <View style={styles.container}>
         <Image source={require('../../assets/logo.png')}
-        style={{ width: '80%', height: '80%', resizeMode: "contain" }}
+          style={{ width: '80%', height: '80%', resizeMode: "contain" }}
         />
       </View>
 
       <View style={styles.footerLogin}>
-
-        <TouchableOpacity style={styles.socialButton} onPress={handleNavigateToPhrases}>
-          <Text style={styles.btSocialText}>VER FRASE</Text>
-        </TouchableOpacity>
 
         <TouchableOpacity style={styles.socialButton} onPress={handleGoogleLogin}>
           <Icon name="google-plus-square" color="#FFF" size={24} />
@@ -107,9 +101,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  backgroundImage:{
-    flex : 1,
-    width : '100%'
+  backgroundImage: {
+    flex: 1,
+    width: '100%'
   }
 
 });

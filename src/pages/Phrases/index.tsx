@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Feather as Icon } from '@expo/vector-icons';
-import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity, Alert, Share } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity, Alert, Share, ImagePropTypes } from 'react-native';
 import { Roboto_300Light_Italic, Roboto_700Bold } from '@expo-google-fonts/roboto';
 
 import Constants from 'expo-constants';
 import * as Sharing from 'expo-sharing';
 import { captureRef } from 'react-native-view-shot';
+import * as Google from 'expo-google-app-auth';
 
-// import ButtonShare from '../ButtonShare';
-
-const Phrases = () => {
-  
-
-  const listPhases = [
+const Phrases = () => {  
+      const listPhases = [
     {
       id: 1,
       phrase: '“Só existem dois dias no ano que nada pode ser feito. Um se chama ontem e o outro se chama amanhã, portanto hoje é o dia certo para amar, acreditar, fazer e principalmente viver.”',
@@ -49,7 +46,6 @@ const Phrases = () => {
       author: 'Mahatma Gandhi'
     }
   ];
-
   const phrasesLenght = listPhases.length;
 
   const phaseChosen = Math.floor(Math.random() * phrasesLenght);
@@ -81,6 +77,8 @@ const Phrases = () => {
   //   }
   // };
 
+
+  //Compratilhamento de imagem OK apenas
   let openShareDialogAsync = async () => {
     if (!(await Sharing.isAvailableAsync())) {
       alert(`Compartilhamento não disponível para esta plataforma`);
@@ -97,7 +95,7 @@ const Phrases = () => {
       },
       error =>
         alert(error)
-        // console.error('Oops, snapshot failed', error)
+      // console.error('Oops, snapshot failed', error)
     );
   };
 
@@ -105,14 +103,15 @@ const Phrases = () => {
     <ImageBackground
       source={require('../../assets/Bacground.png')}
       style={styles.backgroundImage}
-      ref={ view => {
+      ref={view => {
         _shareViewContainer = view;
       }}
     >
+      
       <View style={styles.container}>
 
         <View style={styles.borderPicture}>
-          <Image style={styles.picture} source={{uri: 'https://scontent-gru2-2.xx.fbcdn.net/v/t1.0-9/33020997_1659307647486451_5962006363147075584_o.jpg?_nc_cat=100&_nc_sid=09cbfe&_nc_ohc=udolr62E61cAX-N0AKg&_nc_ht=scontent-gru2-2.xx&oh=7d03abc867c6e3d961cdb6e0d78b78ff&oe=5F2FE064'}} />
+          <Image style={styles.picture} source={{ uri: 'https://scontent-gru2-2.xx.fbcdn.net/v/t1.0-9/33020997_1659307647486451_5962006363147075584_o.jpg?_nc_cat=100&_nc_sid=09cbfe&_nc_ohc=udolr62E61cAX-N0AKg&_nc_ht=scontent-gru2-2.xx&oh=7d03abc867c6e3d961cdb6e0d78b78ff&oe=5F2FE064' }} />
         </View>
 
         <Text style={styles.textPhrases}> {listPhases[phaseChosen].phrase}</Text>
@@ -124,7 +123,6 @@ const Phrases = () => {
       </View>
 
       <View style={styles.footer}>
-        {/* <ButtonShare /> */}
         <TouchableOpacity style={styles.shareContainer} onPress={handleSharePrint}>
           <Icon name="share" color="#FFF" size={22} />
         </TouchableOpacity>
