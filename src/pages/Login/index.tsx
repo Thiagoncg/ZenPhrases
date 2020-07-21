@@ -42,7 +42,7 @@ const Login = () => {
 
   return (
     <ImageBackground
-      source={require('../../assets/Bacground.png')}
+      source={require('../../assets/BacgroundFlower.png')}
       style={styles.backgroundImage}
     >
       <View style={styles.container}>

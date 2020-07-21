@@ -136,7 +136,7 @@ const Phrases = () => {
 
   return (
     <ImageBackground
-      source={require('../../assets/Bacground.png')}
+      source={require('../../assets/BacgroundFlower.png')}
       style={styles.backgroundImage}
       ref={view => {
         _shareViewContainer = view;
