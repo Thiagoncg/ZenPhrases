@@ -44,7 +44,42 @@ const Phrases = () => {
       id: 7,
       phrase: '"Cada dia a natureza produz o suficiente para nossa carência. Se cada um tomasse o que lhe fosse necessário, não havia pobreza no mundo e ninguém morreria de fome."',
       author: 'Mahatma Gandhi'
-    }
+    },
+    {
+      id: 8,
+      phrase: '"Não acredite em algo simplesmente porque ouviu. Não acredite em algo simplesmente porque todos falam a respeito. Não acredite em algo simplesmente porque está escrito em seus livros religiosos. Não acredite em algo só porque seus professores e mestres dizem que é verdade. Não acredite em tradições só porque foram passadas de geração em geração. Mas, depois de muita análise e observação, se você vê que algo concorda com a razão e que conduz ao bem e benefício de todos, aceite-o e viva-o."',
+      author: 'Buda'
+    },
+    {
+      id: 9,
+      phrase: '"Tudo o que um sonho precisa para ser realizado é alguém que acredite que ele possa ser realizado."',
+      author: 'Roberto Shinyashiki'
+    },
+    {
+      id: 10,
+      phrase: '"Acredite em si próprio e chegará um dia em que os outros não terão outra escolha senão acreditar com você."',
+      author: 'Will Durant'
+    },
+    {
+      id: 11,
+      phrase: '"O casamento feliz é e continuará a ser a viagem de descoberta mais importante que o homem jamais poderá empreender."',
+      author: 'Soren Kierkegaard'
+    },
+    {
+      id: 12,
+      phrase: '"É mais útil algumas vezes a extirpação de um erro que a descoberta de muitas verdades."',
+      author: 'Marquês de Maricá'
+    },
+    {
+      id: 13,
+      phrase: '"Toda a descoberta da ciência pura é potencialmente subversiva; por vezes a ciência deve ser tratada como um inimigo possível."',
+      author: 'Aldous Huxley'
+    },
+    {
+      id: 13,
+      phrase: '"Se um homem não descobriu nada pelo qual morreria, não está pronto para viver."',
+      author: 'Martin Luther King'
+    },
   ];
   const phrasesLenght = listPhases.length;
 
@@ -111,7 +146,15 @@ const Phrases = () => {
       <View style={styles.container}>
 
         <View style={styles.borderPicture}>
-          <Image style={styles.picture} source={{ uri: 'https://scontent-gru2-2.xx.fbcdn.net/v/t1.0-9/33020997_1659307647486451_5962006363147075584_o.jpg?_nc_cat=100&_nc_sid=09cbfe&_nc_ohc=udolr62E61cAX-N0AKg&_nc_ht=scontent-gru2-2.xx&oh=7d03abc867c6e3d961cdb6e0d78b78ff&oe=5F2FE064' }} />
+          {/* <Image style={styles.picture} source={{ uri: 'https://scontent-gru2-2.xx.fbcdn.net/v/t1.0-9/33020997_1659307647486451_5962006363147075584_o.jpg?_nc_cat=100&_nc_sid=09cbfe&_nc_ohc=udolr62E61cAX-N0AKg&_nc_ht=scontent-gru2-2.xx&oh=7d03abc867c6e3d961cdb6e0d78b78ff&oe=5F2FE064' }} /> */}
+          <Image source={require('../../assets/logo.png')}
+          style={{ width: '80%', height: '80%', resizeMode: "contain" }}
+        />
+          
+          
+        </View>
+        <View style={styles.main}>
+
         </View>
 
         <Text style={styles.textPhrases}> {listPhases[phaseChosen].phrase}</Text>
@@ -135,15 +178,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  main: {
+    padding:12,
   },
 
   picture: {
     width: 180,
     height: 180,
     borderRadius: 100,
-    borderWidth: 8,
   },
 
   borderPicture: {
@@ -167,6 +213,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: "row-reverse",
     alignItems: "flex-end",
+    paddingTop: 16,
   },
 
   textAuthor: {
@@ -182,7 +229,6 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
     borderWidth: 1,
-
     backgroundColor: "#FFF2",
     borderColor: "#FFF"
   },

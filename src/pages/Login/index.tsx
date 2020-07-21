@@ -8,6 +8,7 @@ import * as Google from 'expo-google-app-auth';
 const Login = () => {
   const navigation = useNavigation();
 
+  //Google Login
   const googleLogin = async () => {
     try {
       const result = await Google.logInAsync({
@@ -29,10 +30,12 @@ const Login = () => {
     }
   }
 
+  //Page Navigation
   function handleNavigateToPhrases() {
     navigation.navigate('Phrases');
   }
 
+  //Google Login
   function handleGoogleLogin() {
     googleLogin();
   }
@@ -49,10 +52,8 @@ const Login = () => {
       </View>
 
       <View style={styles.footerLogin}>
-
-        <TouchableOpacity style={styles.socialButton} onPress={handleGoogleLogin}>
-          <Icon name="google-plus-square" color="#FFF" size={24} />
-          <Text style={styles.btSocialText}>Google Login</Text>
+        <TouchableOpacity style={styles.socialButton} onPress={handleNavigateToPhrases}>
+          <Text style={styles.btSocialText}>Pensamento do dia</Text>
         </TouchableOpacity>
 
       </View>
@@ -77,8 +78,8 @@ const styles = StyleSheet.create({
 
   socialButton: {
     height: 58,
-    width: 280,
-    flexDirection: "row",
+    width: "80%",
+    // flexDirection: "row",
     borderRadius: 4,
     alignItems: "center",
     marginTop: 32,
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontFamily: "Roboto_400Regular",
     fontSize: 16,
-    paddingLeft: 32,
+    // paddingLeft: 32,
   },
 
   main: {
